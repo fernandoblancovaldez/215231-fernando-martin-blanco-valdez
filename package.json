@@ -4,7 +4,7 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "nodemon app.js"
   },
   "repository": {
     "type": "git",
@@ -15,5 +15,14 @@
   "bugs": {
     "url": "https://github.com/fernandoblancovaldez/21523A-fernando-martin-blanco-valdez/issues"
   },
-  "homepage": "https://github.com/fernandoblancovaldez/21523A-fernando-martin-blanco-valdez#readme"
+  "homepage": "https://github.com/fernandoblancovaldez/21523A-fernando-martin-blanco-valdez#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "ejs": "^3.1.9",
+    "express": "^4.18.2",
+    "morgan": "^1.10.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
 }
