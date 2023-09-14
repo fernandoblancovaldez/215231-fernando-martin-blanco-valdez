@@ -1,13 +1,18 @@
 const express = require("express");
 const morgan = require("morgan");
 const cors = require("cors");
+require("dotenv").config();
 
+//Inicialización
 const app = express();
 
-//Middlewares
+//Configuracion de puerto
+const port = process.env.PORT || 3000;
+
+//Configuracion de Middlewares
 app.use(morgan("combined"));
 app.use(cors());
-app.use(express.json());
+app.use(express.json()); // Para que el servidor pueda comprender datos en formato Json
 
 app.get("/", (req, res) => {
   res.send("Hola Mundo");
@@ -35,4 +40,4 @@ req.query
 
 */
 
-app.listen(3000, console.log("Servidor en http://localhost:3000"));
+app.listen(port, console.log(`Servidor en http://localhost:${port}`));
