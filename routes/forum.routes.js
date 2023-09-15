@@ -11,9 +11,9 @@ router.get("/", (req, res) => {
 
 router.post("/new-post", (req, res) => {
   // recibir datos por body
-  const { title, detail } = req.body;
+  const { id, title, content, imgUrl, date } = req.body;
   //se guardan los datos en la base de datos
-  console.log(title, detail);
+  console.log(id, title, content, imgUrl, date);
   return res.send({ msg: "Publicación guardada con éxito" });
 });
 

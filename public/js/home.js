@@ -5,14 +5,15 @@ formGuardar.addEventListener("submit", async (e) => {
 
   //se capturan los datos del formulario
   const title = document.querySelector("#titulo-post").value,
-    detail = document.querySelector("#detalle-post").value;
+    content = document.querySelector("#detalle-post").value,
+    imgUrl = document.querySelector("#imgUrl-post").value;
 
   //se envian datos al servidor
   try {
     const res = await fetch("/new-post", {
       method: "post",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ title, detail }),
+      body: JSON.stringify({ title, content, imgUrl }),
     });
     const data = await res.json();
     console.log(data.msg);

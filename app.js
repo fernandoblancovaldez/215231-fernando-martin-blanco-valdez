@@ -3,6 +3,17 @@ const cors = require("cors");
 const morgan = require("morgan");
 const path = require("path");
 
+// Conexion  a base de datos
+const { sequelize } = require("./database");
+sequelize
+  .authenticate()
+  .then(() => {
+    console.log("Conexión a base de datos exitosa");
+  })
+  .catch((err) =>
+    console.log("Ocurrio un error al conectar con la base de datos", err)
+  );
+
 require("dotenv").config();
 require("ejs");
 
