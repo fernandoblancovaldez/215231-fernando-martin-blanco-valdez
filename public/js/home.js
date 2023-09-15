@@ -10,7 +10,7 @@ formGuardar.addEventListener("submit", async (e) => {
 
   //se envian datos al servidor
   try {
-    const res = await fetch("/new-post", {
+    const res = await fetch("/post", {
       method: "post",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ title, content, imgUrl }),

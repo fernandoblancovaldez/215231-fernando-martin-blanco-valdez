@@ -3,19 +3,29 @@
 // const router = require("express").Router();
 
 const { Router } = require("express");
+const {
+  createPost,
+  readPosts,
+  updatePost,
+  deletePost,
+} = require("../controllers/forum.controllers");
 const router = Router();
 
 router.get("/", (req, res) => {
   res.render("home");
 });
 
-router.post("/new-post", (req, res) => {
-  // recibir datos por body
-  const { id, title, content, imgUrl, date } = req.body;
-  //se guardan los datos en la base de datos
-  console.log(id, title, content, imgUrl, date);
-  return res.send({ msg: "Publicación guardada con éxito" });
-});
+// Crear nueva publicación (CREATE)
+router.post("/post", createPost);
+
+// Obtener todas las publicaciones (READ)
+router.get("/posts", readPosts);
+
+// Actualizar una publicación (UPDATE)
+router.put("/post/:id", updatePost);
+
+// Eliminar una publicación (DELETE)
+router.delete("/post/:id", deletePost);
 
 /*
 app.post("/usuario/:id", (req, res) => {
