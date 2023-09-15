@@ -6,6 +6,7 @@ const { Router } = require("express");
 const {
   createPost,
   readPosts,
+  readPost,
   updatePost,
   deletePost,
 } = require("../controllers/forum.controllers");
@@ -23,6 +24,10 @@ router.get("/admin", (req, res) => {
   res.render("admin");
 });
 
+router.get("/admin/:id", (req, res) => {
+  res.render("update", { id: req.params.id });
+});
+
 //====================================
 //                      Rutas para CRUD de Posts
 //====================================
@@ -32,6 +37,9 @@ router.post("/post", createPost);
 
 // Obtener todas las publicaciones (READ)
 router.get("/posts", readPosts);
+
+// Obtener todas las publicacion (READ)
+router.get("/post/:id", readPost);
 
 // Actualizar una publicación (UPDATE)
 router.put("/post/:id", updatePost);

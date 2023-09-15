@@ -30,6 +30,21 @@ ctrl.readPosts = async (req, res) => {
   }
 };
 
+// Obtener una publicacion (READ)
+ctrl.readPost = async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    const post = await Posts.findByPk(id); // el metodo findByPk trae el elemento que su primary key coincida con el valor ingresado, en éste caso el id
+    res.json(post); //se retorna una respuesta con los datos procesados por el método json
+  } catch (err) {
+    console.log(err);
+    return res
+      .status(500)
+      .json({ msg: err.message || "Error al leer los datos" });
+  }
+};
+
 // Actualizar una publicación (UPDATE)
 ctrl.updatePost = async (req, res) => {
   try {

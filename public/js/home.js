@@ -25,12 +25,17 @@ const showPosts = (posts, htmlElement) => {
                 <h5 class="card-title">${post.title}</h5>
                 <p class="card-text">${post.content}</p>
                 <p class="card-text text-muted">${post.date}</p>
+                <div class="btn-group" role="group" >
+                    <a href="/admin/${post.id}" class="btn btn-primary">Actualizar</a>
+                    <button type="button" class="btn btn-danger onclick="delPost(${post.id})">
+                    </button>
+                </div>
             </div>
         </div>
     </section>    
     `;
   });
-  console.log(regs);
+  // console.log(regs);
 
   //Se crea la lista
   htmlElement.innerHTML = regs;
@@ -51,3 +56,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       .json({ msg: err.message || "Error al cargar la lista de posteos" });
   }
 });
+
+const delPost = (id) => {
+  console.log(id);
+};
