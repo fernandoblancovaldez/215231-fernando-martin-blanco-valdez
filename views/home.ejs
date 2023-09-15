@@ -1,43 +1,7 @@
-<!DOCTYPE html>
-<html lang="es">
+<%- include('partials/header') %>
+    <%- include('partials/navbar') %>
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <title>Foro</title>
-</head>
 
-<body>
-    <h1>Foro</h1>
-    <div class="container">
-        <div class="row">
-            <div class="col">
-                <form id="form-guardar">
-                    <div class="form-floating mb-3">
-                        <input type="text" id="titulo-post" class="form-control" placeholder="Título del post">
-                        <label for="titulo-post">Título del post</label>
-                    </div>
-                    <div class="form-floating mb-3">
-                        <input type="text" id="detalle-post" class="form-control" placeholder="Detalle del post">
-                        <label for="detalle-post">Detalle del post</label>
-                    </div>
-                    <div class="form-floating mb-3">
-                        <input type="text" id="imgUrl-post" class="form-control"
-                            placeholder="URL de la imagen del post">
-                        <label for="imgUrl-post">URL de la imagen del post</label>
-                    </div>
-                    <button type="submit" id="btn-guardar" class="btn btn-primary">guardar</button>
-                </form>
-            </div>
-        </div>
-    </div>
-    <script src="/js/home.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-        crossorigin="anonymous"></script>
-</body>
+        <script src="/js/home.js"></script>
 
-</html>
+        <%- include('partials/footer') %>

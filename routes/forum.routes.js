@@ -11,9 +11,21 @@ const {
 } = require("../controllers/forum.controllers");
 const router = Router();
 
+//====================================
+//                      Rutas para Renderizar Vistas
+//====================================
+
 router.get("/", (req, res) => {
   res.render("home");
 });
+
+router.get("/admin", (req, res) => {
+  res.render("admin");
+});
+
+//====================================
+//                      Rutas para CRUD de Posts
+//====================================
 
 // Crear nueva publicación (CREATE)
 router.post("/post", createPost);

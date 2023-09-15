@@ -5,11 +5,11 @@ const PostModel = sequelize.define(
   {
     id: { type: DataTypes.INTEGER, autoIncrement: true, primaryKey: true },
     title: { type: DataTypes.STRING, allowNull: false },
-    content: { type: DataTypes.STRING, allowNull: false },
-    imgUrl: { type: DataTypes.STRING, allowNull: false },
+    content: { type: DataTypes.TEXT, allowNull: false },
+    img_url: { type: DataTypes.STRING, allowNull: false },
     date: {
       type: DataTypes.DATE,
-      defaultValue: sequelize.literal("CURRENT_TIMESTAMP"),
+      allowNull: false,
     },
   },
   { tableName: "posts", timestamps: false }

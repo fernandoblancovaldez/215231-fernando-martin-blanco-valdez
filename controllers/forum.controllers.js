@@ -6,9 +6,12 @@ ctrl.createPost = async (req, res) => {
   try {
     // recibir datos por body y guardarlos en la base de datos creando una nuev publicación
     const post = await Posts.create(req.body);
-    res.send({ msg: "publicación creada con éxito", post });
+    res.send({ msg: "Publicación creada con éxito", post });
   } catch (err) {
     console.log(err);
+    return res
+      .status(500)
+      .json({ msg: err.message || "Error al crear la nueva publicación" });
   }
 };
 
@@ -17,11 +20,13 @@ ctrl.readPosts = async (req, res) => {
   try {
     // el metodo findall ingresa a la tabla y trae todos los elementos
     const posts = await Posts.findAll();
-
     //se retorna una respuesta con los datos procesados por el método json
     res.json(posts);
   } catch (err) {
     console.log(err);
+    return res
+      .status(500)
+      .json({ msg: err.message || "Error al leer los datos" });
   }
 };
 
@@ -37,6 +42,9 @@ ctrl.updatePost = async (req, res) => {
     res.json({ msg: "Publicación actualizada correctamente" });
   } catch (err) {
     console.log(err);
+    return res
+      .status(500)
+      .json({ msg: err.message || "Error al actualizar la publicación" });
   }
 };
 
@@ -51,6 +59,9 @@ ctrl.deletePost = async (req, res) => {
     res.json({ msg: "Publicación eliminada correctamente" });
   } catch (err) {
     console.log(err);
+    return res
+      .status(500)
+      .json({ msg: err.message || "Error al eliminar la publicación" });
   }
 };
 

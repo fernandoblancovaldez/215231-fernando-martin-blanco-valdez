@@ -11,3 +11,5 @@
 - Rutas y Controladores para las operaciones CRUD
 - Creacion de Vistas a traves de EJS
 - Formularios y el CRUD propiamente dicho
+
+es necesario tener funcionando mysql y apache para realizar las pruebas
