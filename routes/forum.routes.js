@@ -1,15 +1,20 @@
 // Se implementa el enrutador de express
+
 // const router = require("express").Router();
 
 const { Router } = require("express");
 const router = Router();
 
-router.get("/home", (req, res) => {
+router.get("/", (req, res) => {
   res.render("home");
 });
 
-router.post("/usuario/", (req, res) => {
-  res.send(req.query);
+router.post("/new-post", (req, res) => {
+  // recibir datos por body
+  const { title, detail } = req.body;
+  //se guardan los datos en la base de datos
+  console.log(title, detail);
+  return res.send({ msg: "Publicación guardada con éxito" });
 });
 
 /*

@@ -1,10 +1,25 @@
 const formGuardar = document.querySelector("#form-guardar");
-formGuardar.addEventListener("submit", (e) => {
+
+formGuardar.addEventListener("submit", async (e) => {
   e.preventDefault();
 
   //se capturan los datos del formulario
-  const inputTitulo = document.querySelector("#titulo-post").value,
-    inputDetalle = document.querySelector("#detalle-post").value;
+  const title = document.querySelector("#titulo-post").value,
+    detail = document.querySelector("#detalle-post").value;
 
-  console.log(inputTitulo, inputDetalle);
+  //se envian datos al servidor
+  try {
+    const res = await fetch("/new-post", {
+      method: "post",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ title, detail }),
+    });
+    const data = await res.json();
+    console.log(data.msg);
+  } catch (err) {
+    console.log(err);
+  }
+
+  document.querySelector("#titulo-post").value = "";
+  document.querySelector("#detalle-post").value = "";
 });
