@@ -1,43 +1,36 @@
 const express = require("express");
-const morgan = require("morgan");
 const cors = require("cors");
-require("dotenv").config();
+const morgan = require("morgan");
+const path = require("path");
 
-//Inicialización
+require("dotenv").config();
+require("ejs");
+
+// Inicialización
 const app = express();
 
-//Configuracion de puerto
+// Configuracion de Puerto
 const port = process.env.PORT || 3000;
 
-//Configuracion de Middlewares
+// Configuracion de Middlewares
+app.use(
+  cors(/* {
+    origin: `http://localhost:${port}`,
+    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+    preflightContinue: false,
+    optionsSuccessStatus: 204,
+  } */)
+);
 app.use(morgan("combined"));
-app.use(cors());
 app.use(express.json()); // Para que el servidor pueda comprender datos en formato Json
 
-app.get("/", (req, res) => {
-  res.send("Hola Mundo");
-});
+// Configuracion de Archivos Estáticos
+app.use(express.static(path.join(__dirname, "public")));
 
-app.post("/usuario/", (req, res) => {
-  res.send(req.query);
-});
-/*
+//Motor de plantillas
+app.set("view engine", "ejs");
 
-app.post("/usuario/:id", (req, res) => {
-  const id = req.params.id;
-  res.send(id);
-});
-
-  app.post("/nuevo-usuario", (req, res) => {
-  const data = req.body;
-  res.send(data);
-}); 
-
-es decir, las maneras de recibir datos son
-req.body
-req.params
-req.query
-
-*/
+// Configuración de Rutas
+app.use(require("./routes/forum.routes"));
 
 app.listen(port, console.log(`Servidor en http://localhost:${port}`));
