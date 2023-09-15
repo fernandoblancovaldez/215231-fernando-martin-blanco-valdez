@@ -18,8 +18,14 @@ formGuardar.addEventListener("submit", async (e) => {
     });
     const data = await res.json();
     console.log(data.msg);
+
+    alert(data.msg || "Tarea realizada con éxito !");
+    location.href = "/";
   } catch (err) {
     console.log(err);
+    return res
+      .status(500)
+      .json({ msg: err.message || "Error al crear el Post" });
   }
 
   document.querySelector("#titulo-post").value = "";
