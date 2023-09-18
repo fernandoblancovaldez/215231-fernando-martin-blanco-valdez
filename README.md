@@ -12,4 +12,4 @@
 - Creacion de Vistas a traves de EJS
 - Formularios y el CRUD propiamente dicho
 
-es necesario tener funcionando mysql y apache para realizar las pruebas
+_**es necesario tener funcionando mysql y apache** para realizar las pruebas, ademas **mysql debe contener una bbdd llamada "pruebadb" y una tabla "posts"** para sincronizarse correctamente con sequelize_
