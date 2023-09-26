@@ -18,7 +18,7 @@ const showPosts = (posts, htmlElement) => {
   //método para recorrer los regs
   posts.forEach((post) => {
     regs += `
-    <section>
+    <section class="col col-auto">
         <div class="card" style="width: 18rem;">
             <img src="${post.img_url}" class="card-img-top" alt="${post.title}">
             <div class="card-body">
@@ -27,7 +27,8 @@ const showPosts = (posts, htmlElement) => {
                 <p class="card-text text-muted">${post.date}</p>
                 <div class="btn-group" role="group" >
                     <a href="/admin/${post.id}" class="btn btn-primary">Actualizar</a>
-                    <button type="button" class="btn btn-danger onclick="delPost(${post.id})">
+                    <button type="button" class="btn btn-danger del-btn" data-id="${post.id}">
+                        Eliminar
                     </button>
                 </div>
             </div>
@@ -39,6 +40,25 @@ const showPosts = (posts, htmlElement) => {
 
   //Se crea la lista
   htmlElement.innerHTML = regs;
+};
+
+//esta función sirve para eliminar los elementos de la base de datos a partir del id que se les asigne dinámicamente
+const delPost = async (id) => {
+  console.log(`Eliminando el Post con id=${id}`);
+  try {
+    const res = await fetch(`/post/${id}`, {
+      method: "delete",
+    });
+    const data = await res.json();
+    //console.log(data.msg);
+
+    alert(data.msg || "Eliminación realizada con éxito !");
+  } catch (err) {
+    console.log(err);
+    return res
+      .status(500)
+      .json({ msg: err.message || "Error al eliminar el Post" });
+  }
 };
 
 document.addEventListener("DOMContentLoaded", async () => {
@@ -57,6 +77,24 @@ document.addEventListener("DOMContentLoaded", async () => {
   }
 });
 
-const delPost = (id) => {
-  console.log(id);
-};
+document.addEventListener("click", async (e) => {
+  if (e.target.matches(".del-btn")) {
+    e.preventDefault();
+    const id = e.target.dataset.id;
+    try {
+      //llamo la funcion que elimina el post que corresponda con el id del elemento que desencadenó el evento "click"
+      await delPost(id);
+      const posts = await readPosts();
+      //console.log(posts);
+
+      // Modificar el dom para mostrar los Posteos
+      const main = document.querySelector("#posts-list");
+      showPosts(posts, main);
+    } catch (err) {
+      console.log(err);
+      return res
+        .status(500)
+        .json({ msg: err.message || "Error al cargar la lista de posteos" });
+    }
+  }
+});
