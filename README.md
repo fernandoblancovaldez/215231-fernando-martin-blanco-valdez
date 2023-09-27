@@ -2,11 +2,10 @@
 
 ## Proyecto Integrador Final - Fernando Blanco
 
-### El proyecto aplicará:
+### El proyecto aplica:
 
 - Modelo de datos
-- Express, Cors, Dotenv, Helmet, Morgan, EJS, Sequelize, y el driver
-  de MySQL para Sequelize (mysql2) y los Middelwares necesarios
+- Express, Cors, Dotenv, Morgan, EJS, Sequelize, y el driver de MySQL para Sequelize (mysql2)
 - Configuración del archivo “.env”
 - Rutas y Controladores para las operaciones CRUD
 - Creacion de Vistas a traves de EJS

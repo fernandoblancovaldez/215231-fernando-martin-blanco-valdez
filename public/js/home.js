@@ -20,11 +20,11 @@ const showPosts = (posts, htmlElement) => {
     regs += `
     <section class="col col-auto">
         <div class="card" style="width: 18rem;">
-            <img src="${post.img_url}" class="card-img-top" alt="${post.title}">
+            <img src="${post.img_url}" class="card-img-top" alt="${post.title}" style={{objectFit: "contain"}}>
             <div class="card-body">
                 <h5 class="card-title">${post.title}</h5>
-                <p class="card-text">${post.content}</p>
-                <p class="card-text text-muted">${post.date}</p>
+                <p class="card-text mb-1">${post.content}</p>
+                <p class="card-text text-muted mb-1 fs-6">${post.date}</p>
                 <div class="btn-group" role="group" >
                     <a href="/admin/${post.id}" class="btn btn-primary">Actualizar</a>
                     <button type="button" class="btn btn-danger del-btn" data-id="${post.id}">

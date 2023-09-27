@@ -8,7 +8,7 @@ const PostModel = sequelize.define(
     content: { type: DataTypes.TEXT, allowNull: false },
     img_url: { type: DataTypes.STRING, allowNull: false },
     date: {
-      type: DataTypes.DATE,
+      type: DataTypes.DATEONLY,
       allowNull: false,
     },
   },
